@@ -23,7 +23,7 @@ const Home = ({ type }) => {
     <div className="home">
       <Navbar/>
       <Featured type={type} genre={genre}/>
-      { lists.map(list => (<List list={list} slidesPerView={4} slidesPerGroup={1} spaceBetween={10} key={list._id}/>)) }
+      { lists.map(list => (<List key={list._id} list={list} slidesPerView={4} slidesPerGroup={1} spaceBetween={10}/>)) }
     </div>
   )
 }

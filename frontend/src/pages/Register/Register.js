@@ -3,7 +3,7 @@ import './register.scss'
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import userApi from '../../http/userApi';
+import userApi from '../../http/authApi';
 
 export const Register = () => {
   const dispatch = useDispatch();

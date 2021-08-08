@@ -1,14 +1,12 @@
 import Logo from "../../assets/logo.svg";
 import './login.scss'
 import {useState} from "react";
-import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {login} from '../../redux/userSlice';
+import {login} from '../../redux/authSlice';
 
 export const Login = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState();
-  const history = useHistory();
 
   const handleChange = e => {
     setForm({...form, [e.target.name]: e.target.value});
@@ -17,7 +15,6 @@ export const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     await dispatch(login(form));
-    history.push('/');
   }
 
   return (

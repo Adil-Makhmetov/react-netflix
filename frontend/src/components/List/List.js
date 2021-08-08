@@ -8,13 +8,13 @@ import {useRef} from "react";
 
 SwiperCore.use([Navigation]);
 
-const List = ({list, slidesPerView, slidesPerGroup, spaceBetween}) => {
+const List = ({list, slidesPerView, slidesPerGroup, spaceBetween, i}) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   return (
-    <div className="lists">
-      <div className="lists__title">{list.title}</div>
+    <div className="list">
+      <div className="list__title">{list.title}</div>
       <Swiper
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
@@ -26,11 +26,11 @@ const List = ({list, slidesPerView, slidesPerGroup, spaceBetween}) => {
         }}
       >
         <div className='swiper-button swiper-button-prev' ref={prevRef}><ArrowBackIosOutlined/></div>
-        {list.content.map(id => (<SwiperSlide><ListItem key={id} id={id}/></SwiperSlide>))}
-        {list.content.map(id => (<SwiperSlide><ListItem key={id} id={id}/></SwiperSlide>))}
-        {list.content.map(id => (<SwiperSlide><ListItem key={id} id={id}/></SwiperSlide>))}
-        {list.content.map(id => (<SwiperSlide><ListItem key={id} id={id}/></SwiperSlide>))}
-        {list.content.map(id => (<SwiperSlide><ListItem key={id} id={id}/></SwiperSlide>))}
+        {list.content.map(id => (<SwiperSlide key={id}><ListItem id={id}/></SwiperSlide>))}
+        {list.content.map(id => (<SwiperSlide key={id}><ListItem id={id}/></SwiperSlide>))}
+        {list.content.map(id => (<SwiperSlide key={id}><ListItem id={id}/></SwiperSlide>))}
+        {list.content.map(id => (<SwiperSlide key={id}><ListItem id={id}/></SwiperSlide>))}
+        {list.content.map(id => (<SwiperSlide key={id}><ListItem id={id}/></SwiperSlide>))}
         <div className='swiper-button swiper-button-next' ref={nextRef}><ArrowForwardIosOutlined/></div>
       </Swiper>
     </div>

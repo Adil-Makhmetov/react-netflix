@@ -5,6 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
@@ -21,11 +22,8 @@ import NewList from './pages/NewList/NewList';
 import Sidebar from './components/Sidebar/Sidebar';
 import TopBar from './components/TopBar/TopBar';
 
-import {useContext} from "react";
-import {AuthContext} from "./context/auth/AuthContext";
-
 export default () => {
-  const { user } = useContext(AuthContext);
+  const user = useSelector(state => state.authReducer.user);
   return (
     <Router>
       <Switch>

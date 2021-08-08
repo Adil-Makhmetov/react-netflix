@@ -1,5 +1,5 @@
 import instance from "./instance";
-import {logout} from "../redux/userSlice";
+import {logout} from "../redux/authSlice";
 
 export default {
   register: async (username, email, password, dispatch) => {
