@@ -1,0 +1,107 @@
+@use "sass:math";
+
+$container-gap-x: 0;
+$container-gap-y: 0;
+$row-gap: 20px;
+$column-gap: 30px;
+$columns: 12;
+$breakpoints: (mob: 500px, tab: 768px, lap: 1024px, desc: 1440px);
+
+/*
+  wss-breakpoint-none - hide element
+  @include wss-response(breakpoint) { css: styles }
+*/
+
+.wss-none {
+  display: none !important;
+}
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+  .wss-#{$breakpoint-name}-none {
+    $breakpoint-i: index(map-keys($breakpoints), $breakpoint-name);
+    $breakpoint-value: #{nth(map-values($breakpoints), $breakpoint-i)};
+    $media: "screen and (min-width: 0) and (max-width: #{$breakpoint-value})";
+    @media #{$media} { display: none; }
+  }
+}
+
+@mixin wss-response($breakpoint-name) {
+  $breakpoint-i: index(map-keys($breakpoints), $breakpoint-name);
+  $breakpoint-value: #{nth(map-values($breakpoints), $breakpoint-i)};
+  $media: "screen and (min-width: 0) and (max-width: #{$breakpoint-value})";
+  @media #{$media} { @content; }
+}
+
+/* Container */
+
+/*
+  wss-container - default
+  wss-container-inline - child elements without col properties
+
+  wss-container-top - redefined align-items
+  wss-container-bottom - redefined align-items
+  wss-container-stretch - redefined align-items
+  wss-container-center - redefined justify-content
+*/
+.wss-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: $container-gap-y $container-gap-x;
+  gap: $row-gap $column-gap;
+  @include wss-response(mob) { padding: $container-gap-y #{math.div($container-gap-x, 2)}; }
+  & .wss-container { padding: 0; width: 100%; }
+  & > *:not(.wss-container) { flex-shrink: 0; }
+
+  &-top, &-bottom, &-stretch, &-inline, &-center{
+    @extend .wss-container;
+  }
+  &-top { align-items: flex-start;}
+  &-bottom { align-items: flex-end;}
+  &-stretch { align-items: stretch;}
+  &-inline { > * { flex-basis: auto; }}
+  &-center { justify-content: center;}
+}
+
+/* Columns */
+
+/*
+  wss-col-{col-number}        - element will change own width
+  wss-col-{col-number}-center - element will one in row and move to center
+  wss-col-{col-number}-left   - next element will start from new row
+  wss-col-{col-number}-right  - element will move to end of row
+*/
+
+@mixin columnMixin($width) {
+  &, &-left, &-right, &-center { flex-basis: $width; }
+  & { margin-left: 0; margin-right: 0; }
+  &-left { margin-right: calc(100% - #{$width}); margin-left: 0; }
+  &-right { margin-left: calc(100% - #{$width}); margin-right: 0; }
+  &-center {
+    margin-right: calc((100% - #{$width}) / 2);
+    margin-left: calc((100% - #{$width}) / 2);
+    justify-content: center;
+  }
+}
+
+@for $i from $columns through 1 {
+  $gapsWidth: $column-gap * ($i - 1);
+  $width: calc((100% - #{$column-gap * 11}) / #{$columns} * #{$i} + #{$gapsWidth});
+  *.wss-col-#{$i} { @include columnMixin($width); }
+
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+    $breakpoint-i: index(map-values($breakpoints), $breakpoint-value);
+    $media: if(
+      $breakpoint-i == 1,
+      "screen and (min-width: 0px) and (max-width: #{$breakpoint-value})",
+      "screen and (min-width: #{nth(map-values($breakpoints), $breakpoint-i - 1) + 1}) and (max-width: #{$breakpoint-value})"
+    );
+
+    .wss-container *.wss-col-#{$breakpoint-name}-#{$i} {
+      @media #{$media} {
+        flex-basis: $width;
+        @include columnMixin($width);
+      }
+    }
+  }
+}

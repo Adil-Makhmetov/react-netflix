@@ -1,0 +1,57 @@
+@import "../../mixins";
+
+.feautured {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 30px;
+  margin-bottom: 30px;
+
+  .feautured__item {
+    flex: 1;
+    padding: 30px;
+    cursor: pointer;
+    @include boxShadow;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .feautured__title {
+    font-size: 20px;
+  }
+
+  .feautured__money {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  .feautured__price {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .feautured__rate {
+    display: flex;
+    align-items: center;
+  }
+
+  .feautured__icon {
+    margin-left: 5px;
+    font-size: 16px;
+
+    &.negative {
+      color: var(--main-danger);
+    }
+    &.positive {
+      color: var(--main-success);
+    }
+  }
+
+  .feautured__sub {
+    font-size: 15px;
+    color: gray;
+  }
+}

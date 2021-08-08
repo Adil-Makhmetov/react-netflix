@@ -1,0 +1,8 @@
+@mixin bgi($url, $bgsz) {
+  background-image: url($url);
+  background-size: $bgsz;
+  background-position: center;
+}
+
+/* Font Mixins */
+@mixin text { font: 500 16px/135% Roboto; }

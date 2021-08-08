@@ -1,0 +1,129 @@
+@import '../../mixins';
+
+.movie {
+  padding: 10px;
+
+  .movie__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .movie__body {
+    display: flex;
+    row-gap: 30px;
+  }
+
+  .movie-top-right {
+    @include boxShadow;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    row-gap: 10px;
+  }
+
+  .movie__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .movie__title {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+  }
+
+  .movie__name {
+    font-weight: 600;
+  }
+
+  .movie-info {
+    .movie-info__item {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      justify-content: space-between;
+
+      &:nth-of-type(odd) {
+        background-color: #e2e2e2;
+      }
+
+      .movie-info__value {
+        font-weight: 300;
+      }
+    }
+  }
+
+  .movie-bottom {
+    @include boxShadow;
+    padding: 20px;
+  }
+
+  .movie__form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .movie__form-left {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .movie__field {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      color: gray;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    & input {
+      border: 0;
+      border-bottom: 1px solid gray;
+      padding: 5px;
+    }
+
+    & select {
+      border: 0;
+      border-bottom: 1px solid gray;
+      padding: 5px;
+    }
+  }
+
+  .movie__form-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .movie__upload {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .movie__upload-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .movie__action {
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: var(--main-accent);
+    color: white;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,12 @@
+.topbar {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .topbar__icons {
+    display: flex;
+    column-gap: 5px;
+    margin-left: auto;
+  }
+}

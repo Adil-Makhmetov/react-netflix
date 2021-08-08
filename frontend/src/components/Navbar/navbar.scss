@@ -1,0 +1,69 @@
+.navbar {
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, .3) 50%);
+  color: white;
+  position: fixed;
+  top: 0;
+  transition: background-color .2s ease-in-out;
+  width: 100%;
+  z-index: 999;
+
+  .logo {
+    fill: #fff;
+    display: flex;
+    align-items: center;
+    width: 70px;
+    object-fit: contain;
+  }
+
+  &_scrolled {
+    background-color: var(--main-black);
+  }
+
+  .icon {
+    cursor: pointer;
+  }
+
+  .navbar__left {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .navbar__right {
+    align-items: center;
+    column-gap: 10px;
+    display: flex;
+  }
+
+  .navbar__menu {
+    column-gap: 10px;
+    display: flex;
+  }
+
+  .navbar__avatar {
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    object-fit: cover;
+    width: 30px;
+  }
+
+  .navbar__profile-menu {
+    position: relative;
+
+    &:hover .navbar__profile-actions {
+      display: flex;
+      cursor: pointer;
+    }
+  }
+
+  .navbar__profile-actions {
+    background-color: var(--main-color);
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+  }
+}
