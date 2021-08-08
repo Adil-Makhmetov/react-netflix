@@ -1,0 +1,64 @@
+@import "../../mixins";
+
+.transactions {
+  @include boxShadow;
+  margin-top: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  .transactions__title {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 0 0 0;
+  }
+}
+
+.transactions-table {
+  td { padding: 5px;}
+  th { padding: 10px 5px; }
+
+  .transactions-table__headers {
+    text-align: left;
+  }
+
+  .transactions-table__user {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+  }
+
+  .transactions-table__avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .transactions-table__date,
+  .transactions-table__amount {
+    font-weight: 300;
+    color: darkgray;
+  }
+
+  .transactions-table__button {
+    padding: 5px 7px;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+
+    &.Approved {
+      background-color: var(--main-success);
+    }
+
+    &.Decined {
+      background-color: var(--main-danger);
+    }
+
+    &.Pending {
+      background-color: var(--main-light);
+      color: darkgray;
+    }
+  }
+}

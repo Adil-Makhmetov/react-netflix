@@ -1,0 +1,91 @@
+.list-item {
+  flex-shrink: 0;
+  background-color: white;
+  transition: all .2s ease-in-out;
+  position: relative;
+  display: block;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+.list-item__info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.75);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px 50px 15px 50px;
+  row-gap: 10px;
+
+  .list-item__icons {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    line-height: 0;
+
+    .icon {
+      width: 26px;
+      height: 26px;
+      padding: 3px;
+      cursor: pointer;
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+  }
+
+  .list-item__description {
+    font-size: 14px;
+    font-weight: 400;
+    color: gray;
+    transition: all .2s ease;
+    line-height: 150%;
+    flex-basis: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .list-item__advanced {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 15px;
+    align-items: center;
+    align-self: flex-end;
+  }
+
+  .list-item__limit, .list-item__year {
+    border: 1px solid gray;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 125%;
+    color: gray;
+  }
+
+  .list-item__duration {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+}

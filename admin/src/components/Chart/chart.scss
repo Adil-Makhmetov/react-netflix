@@ -1,0 +1,10 @@
+@import "../../mixins";
+
+.chart {
+  padding: 20px;
+  @include boxShadow;
+
+  .chart__title {
+    margin-bottom: 20px;
+  }
+}

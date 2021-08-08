@@ -1,0 +1,149 @@
+@import '../../mixins';
+
+.user {
+  padding: 10px;
+
+  .user__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .user__body {
+    display: flex;
+  }
+
+  .user-show {
+    padding: 20px;
+    @include boxShadow;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .user-show-top {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+  }
+
+  .user__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user__title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user__name {
+    font-weight: 600;
+  }
+
+  .user__job {
+    font-weight: 300;
+    font-size: 14px;
+    color: gray;
+  }
+
+  .user-show-bottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .user__info-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #afaaaa;
+    margin-top: 10px;
+  }
+
+  .user__info {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 16px;
+    color: #444;
+  }
+
+  .user__icon {
+    font-size: 16px;
+  }
+
+  .user-update {
+    padding: 20px;
+    @include boxShadow;
+  }
+
+  .user-update__title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .user-update__form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .user-update__form-left {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .user-update__field {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+    label {
+      font-size: 14px;
+    }
+
+    input {
+      border: 0;
+      max-width: 250px;
+      border-bottom: 1px solid gray;
+      height: 30px;
+    }
+  }
+
+  .user-update__form-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .user-update__upload {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+  }
+
+  .user-update__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .user-update__icon {
+    cursor: pointer;
+  }
+
+  .user-update__action {
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: var(--main-accent);
+    color: white;
+    font-weight: 400;
+  }
+}

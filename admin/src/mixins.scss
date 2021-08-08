@@ -1,0 +1,13 @@
+@mixin bgi($url, $bgsz) {
+  background-image: url($url);
+  background-size: $bgsz;
+  background-position: center;
+}
+
+@mixin boxShadow {
+  box-shadow: 0 0 11px -5px rgba(0,0,0,.5);
+  border-radius: 10px;
+}
+
+/* Font Mixins */
+@mixin text { font: 400 16px/135% Roboto; }
