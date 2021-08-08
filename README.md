@@ -1,2 +1,2 @@
-# react-netflix
+# React-netflix
 Mern
