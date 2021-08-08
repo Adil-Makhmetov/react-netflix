@@ -2,7 +2,7 @@ FROM node:alpine
 
 WORKDIR /
 
-ENV PATH /.env:$PATH
+ENV PATH /node_modules/.bin:$PATH
 
 COPY package.json ./
 
