@@ -1,14 +1,14 @@
 version: "3"
 
 volumes:
+  frontend-netflix:
+    build: frontend/
+    restart: always
+
   admin-netflix:
     build: admin/
     restart: always
 
   api-netflix:
     build: api/
-    restart: always
-
-  frontend-netflix:
-    build: frontend/
     restart: always
