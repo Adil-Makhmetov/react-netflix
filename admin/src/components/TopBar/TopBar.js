@@ -1,11 +1,10 @@
 import './topbar.scss';
 import {NotificationsNone, Language, Settings, ExitToApp} from "@material-ui/icons";
-import {useContext} from "react";
-import {AuthContext} from "../../context/auth/AuthContext";
-import AuthApiCalls from "../../context/auth/AuthApiCalls";
+import {useDispatch} from "react-redux";
+import authApi from "../../http/authApi";
 
 export default () => {
-  const { dispatch } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   return (
     <div className='topbar'>
@@ -22,7 +21,7 @@ export default () => {
           <Settings/>
         </div>
         <div className="icon-notice">
-          <ExitToApp onClick={AuthApiCalls.logout.bind(this, dispatch)}/>
+          <ExitToApp onClick={authApi.logout.bind(this, dispatch)}/>
         </div>
       </div>
     </div>

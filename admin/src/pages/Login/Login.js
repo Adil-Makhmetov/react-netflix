@@ -1,24 +1,27 @@
 import './login.scss';
-import {useContext, useState} from "react";
-import {AuthContext} from "../../context/auth/AuthContext";
-import AuthApiCalls from '../../context/auth/AuthApiCalls';
+import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {login} from "../../redux/authSlice";
 
 export default () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const {isFetching, dispatch} = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const [form, setForm] = useState();
 
-  const handleLogin = (e) => {
+  const handleChange = e => {
+    setForm({...form, [e.target.name]: e.target.value});
+  }
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    AuthApiCalls.login({email, password}, dispatch);
+    await dispatch(login(form));
   }
 
   return (
     <div className="login">
       <form>
-        <input type="text" placeholder="Login" className="login__input" onChange={e => setEmail(e.target.value)}/>
-        <input type="password" placeholder="Password" className="login__password" onChange={e => setPassword(e.target.value)}/>
-        <button className="login__action" onClick={handleLogin} disabled={isFetching}>Login</button>
+        <input type="email" name='email' placeholder="Login" className="login__input" onChange={handleChange}/>
+        <input type="password" name='password' placeholder="Password" className="login__password" onChange={handleChange}/>
+        <button className="login__action" onClick={handleSubmit}>Login</button>
       </form>
     </div>
   )

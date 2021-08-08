@@ -5,7 +5,7 @@ import { Search, Notifications, ArrowDropDown } from '@material-ui/icons';
 import {useState} from "react";
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import userApi from '../../http/userApi';
+import authApi from '../../http/authApi';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -16,11 +16,7 @@ const Navbar = () => {
     return () => (window.onscroll = null);
   }
 
-  const handleLogout = () => {
-    userApi.logout(dispatch);
-  }
-
-  const user = useSelector(state => state.userReducer.user);
+  const user = useSelector(state => state.authReducer.user);
 
   return (
     <div className={isScrolled ? "navbar navbar_scrolled wss-container-inline" : "navbar wss-container-inline"}>
@@ -44,7 +40,7 @@ const Navbar = () => {
           <ArrowDropDown className='icon navbar__profile-arrow'/>
           <div className="navbar__profile-actions">
             <span>Settings</span>
-            <span onClick={handleLogout}>Log Out</span>
+            <span onClick={authApi.logout.bind(this, dispatch)}>Log Out</span>
           </div>
         </div>
       </div>

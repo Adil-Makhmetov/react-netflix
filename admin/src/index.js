@@ -1,22 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from './App';
-import {AuthContextProvider} from "./context/auth/AuthContext";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import {MovieContextProvider} from "./context/movie/MovieContext";
 import {ListContextProvider} from "./context/list/ListContext";
 import {UserContextProvider} from "./context/user/UserContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <MovieContextProvider>
-        <ListContextProvider>
-          <UserContextProvider>
+    <MovieContextProvider>
+      <ListContextProvider>
+        <UserContextProvider>
+          <Provider store={store}>
             <App />
-          </UserContextProvider>
-        </ListContextProvider>
-      </MovieContextProvider>
-    </AuthContextProvider>
+          </Provider>
+        </UserContextProvider>
+      </ListContextProvider>
+    </MovieContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

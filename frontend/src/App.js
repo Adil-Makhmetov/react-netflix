@@ -13,14 +13,12 @@ import Login from "./pages/Login/Login";
 import {useSelector} from "react-redux";
 
 const App = () => {
-  const user = useSelector(state => state.userReducer.user);
+  const user = useSelector(state => state.authReducer.user);
   return (
     <Router>
       <Switch>
-        <Route path="/login"><Login/></Route>
-        <Route path="/register">
-          {user ? <Redirect to='/'/> : <Register/>}
-        </Route>
+        <Route path='/login'>{ user ? <Redirect to='/'/> : <Login/> }</Route>
+        <Route path="/register">{user ? <Redirect to='/'/> : <Register/>}</Route>
         <Route path="/movies">{user ? <Home type='movies'/> : <Redirect to='/register'/>}</Route>
         <Route path="/series">{user ? <Home type='series'/> : <Redirect to='/register'/>}</Route>
         <Route path="/watch/:id">{user ? <Watch/> : <Redirect to='/register'/>}</Route>

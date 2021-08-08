@@ -29,7 +29,6 @@ const ListItem = ({ id }) => {
     ) }
     <div className="list-item__info">
       <div className="list-item__icons">
-        <Link to={`watch/${movie._id}`}><PlayArrow className="icon"/></Link>
         <Add className="icon"/>
         <ThumbUpAltOutlined className="icon"/>
         <ThumbDownOutlined className="icon"/>

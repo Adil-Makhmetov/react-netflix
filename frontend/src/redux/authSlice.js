@@ -6,8 +6,8 @@ export const login = createAsyncThunk('user', async (user) => {
   return res.data;
 })
 
-export const userSlice = createSlice({
-  name: "userSlice",
+export const authSlice = createSlice({
+  name: "authSlice",
   initialState: {
     user: JSON.parse(localStorage.getItem('user')) || null,
     pending: false,
@@ -27,6 +27,7 @@ export const userSlice = createSlice({
     },
     [login.fulfilled]: (state, action) => {
       localStorage.setItem("user", JSON.stringify(action.payload));
+      Object.assign(instance.defaults, {headers: {authorization: `Bearer ${action.payload.accessToken}`}});
       state.pending = false;
       state.user = action.payload;
     },
@@ -37,5 +38,5 @@ export const userSlice = createSlice({
   }
 });
 
-export const {loginStart, loginSuccess, loginFailure, logout} = userSlice.actions;
-export default userSlice.reducer;
+export const {logout} = authSlice.actions;
+export default authSlice.reducer;
