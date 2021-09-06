@@ -1,14 +1,20 @@
 version: "3"
 
-volumes:
+services:
   frontend-netflix:
     build: frontend/
     restart: always
+    ports:
+    - 3000:3000
 
   admin-netflix:
     build: admin/
     restart: always
+    ports:
+    - 4000:4000
 
   api-netflix:
     build: api/
     restart: always
+    ports:
+    - 5000:5000
